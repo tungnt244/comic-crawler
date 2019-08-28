@@ -9,6 +9,8 @@ public interface Task extends Comparable<Task>{
 
 	public String getLastWorker();
 
+	public void setLastWorker(String lastWorker);
+
 	public Set<String> getAttributeNames();
 
 	public String getError();
