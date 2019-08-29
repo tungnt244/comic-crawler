@@ -26,25 +26,26 @@ public class Run {
 			finalTasks.addAll(tasks);
 		}
 
+		WorkerTaskProvider workerTaskProvider = new WorkerTaskProvider();
 		List<AbstractWorker> workers = new LinkedList<>();
-		workers.add(new DelayWorker());
-		workers.add(new DummyWorker());
-		workers.add(new FinishWorker("finisher", false));
+		workers.add(new WorkerDelay());
+		workers.add(new WorkerDummy());
+		workers.add(new WorkerFinish());
 		List<String> chain = workers.stream().map(AbstractWorker::getName).collect(Collectors.toList());
-		chain.add("taskProvider");
+		chain.add(workerTaskProvider.getName());
 		TaskHolder taskHolder = new SimpleTaskHolder();
 		taskHolder.setWorkerChain(chain);
+
+
+		workerTaskProvider.setListTasks(finalTasks);
+		workerTaskProvider.setTaskHolder(taskHolder);
 
 		workers.forEach(abstractWorker -> {
 			abstractWorker.setTaskHolder(taskHolder);
 		});
-		TaskProvider taskProvider = new TaskProvider();
-		taskProvider.setListTasks(finalTasks);
-		taskProvider.setTaskHolder(taskHolder);
 		System.out.println("hello there");
-		workers.add(taskProvider);
-
-		workers.get(2).start();
+		workers.add(workerTaskProvider);
+		workers.get(0).start();
 
 	}
 }

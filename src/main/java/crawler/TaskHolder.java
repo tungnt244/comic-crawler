@@ -15,4 +15,6 @@ public interface TaskHolder {
 	public boolean addTask(Task task);
 
 	public Task removeTask(String workerName);
+
+	public int getTasksCount();
 }

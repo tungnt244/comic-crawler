@@ -19,7 +19,7 @@ public abstract class AbstractWorker implements Worker, Runnable {
 
 	Thread thisThread;
 
-	int sleepTimeOut = 20;
+	int sleepTimeOut = 2;
 
 	int id;
 
@@ -80,11 +80,15 @@ public abstract class AbstractWorker implements Worker, Runnable {
 
 			if(!pollTask()) {
 				try {
+					System.out.println("Slepp for 5s");
 					Thread.sleep(sleepTimeOut);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				sleptMilis += sleepTimeOut;
+			}
+			if(taskHolder.getTasksCount() <= 0) {
+				stop = true;
 			}
 		}
 		System.out.println("Runnnnnnn");
@@ -95,16 +99,16 @@ public abstract class AbstractWorker implements Worker, Runnable {
 		Task task = null;
 		try {
 			do {
-				if(this.getClass() != TaskProvider.class) {
+				if(this.getClass() != WorkerTaskProvider.class) {
 					task = taskHolder.poll(name);
 				} else {
-					task = taskHolder.removeTask(name);
+					task =taskHolder.removeTask(name);
 				}
 
 				if(task == null) return false;
 			} while (cancellation && task.isCancelled());
-			tasksInProgress.incrementAndGet();
-			tasksPolled.incrementAndGet();
+			System.out.println("in processed " +tasksInProgress.incrementAndGet());
+			System.out.println("polled " +tasksPolled.incrementAndGet());
 			newTask(task);
 		} catch (Exception e) {
 			e.printStackTrace();

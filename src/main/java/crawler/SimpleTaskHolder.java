@@ -18,6 +18,8 @@ public class SimpleTaskHolder implements TaskHolder {
 
 	private final static int QUEUE_CAPACITY = 1500;
 
+	int tasksCount = 0;
+
 	@Override
 	public Task poll(String workerName) {
 		Task result = null;
@@ -67,7 +69,7 @@ public class SimpleTaskHolder implements TaskHolder {
 		} catch (InterruptedException e) {
 			LOG.error("put was interrupted {}", task);
 		}
-
+		tasksCount++;
 		return result;
 	}
 
@@ -78,7 +80,7 @@ public class SimpleTaskHolder implements TaskHolder {
 		if(result!=null) {
 			LOG.debug("{} removed task {}", workerName, result.toString());
 		}
-
+		tasksCount--;
 		return result;
 	}
 
@@ -91,5 +93,9 @@ public class SimpleTaskHolder implements TaskHolder {
 			result = workers.get(workers.indexOf(task.getLastWorker()) + 1);
 		}
 		return result;
+	}
+
+	public int getTasksCount() {
+		return tasksCount;
 	}
 }

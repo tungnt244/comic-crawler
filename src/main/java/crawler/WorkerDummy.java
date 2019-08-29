@@ -1,12 +1,12 @@
 package crawler;
 
-public class DummyWorker extends AbstractWorker {
+public class WorkerDummy extends AbstractWorker {
 
-	public DummyWorker() {
-		this("dummy boy", false);
+	public WorkerDummy() {
+		this("dummyWorker", false);
 	}
 
-	public DummyWorker(String name, boolean cancellation) {
+	public WorkerDummy(String name, boolean cancellation) {
 		super(name, cancellation);
 	}
 
@@ -18,7 +18,7 @@ public class DummyWorker extends AbstractWorker {
 	@Override
 	public void newTask(Task task) {
 		System.out.println("new task dummy");
-		taskHolder.addTask(task);
+//		taskHolder.addTask(task);
 		releaseTask(task);
 	}
 

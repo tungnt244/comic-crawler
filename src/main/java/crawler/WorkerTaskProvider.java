@@ -6,9 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.util.LinkedList;
 
 
-public class TaskProvider extends AbstractWorker {
+public class WorkerTaskProvider extends AbstractWorker {
 
-	private static Logger LOG = LoggerFactory.getLogger(TaskProvider.class);
+	private static Logger LOG = LoggerFactory.getLogger(WorkerTaskProvider.class);
 
 	private static final String PROP_NAME_TASK_PROCESS_START_TIME_MILLIS = "PROP_NAME_TASK_PROCESS_START_TIME_MILLIS";
 	private static final String PROP_NAME_DESCRIPTOR_ID = "descriptorId";
@@ -17,11 +17,11 @@ public class TaskProvider extends AbstractWorker {
 	LinkedList<Task> listTasks;
 	private long createdTasks;
 
-	public TaskProvider() {
+	public WorkerTaskProvider() {
 		this("taskProvider", false);
 	}
 
-	public TaskProvider(String name, boolean cancellation) {
+	public WorkerTaskProvider(String name, boolean cancellation) {
 		super(name, cancellation);
 	}
 
@@ -46,7 +46,6 @@ public class TaskProvider extends AbstractWorker {
 	private void addTaskFromDescriptors() {
 		System.out.println("list tasks remain"+ listTasks.size());
 		Task task = listTasks.poll();
-		task.putAttribute(PROP_NAME_TASK_PROCESS_START_TIME_MILLIS, System.currentTimeMillis());
 		taskHolder.addTask(task);
 		++createdTasks;
 	}

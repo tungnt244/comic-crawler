@@ -1,8 +1,11 @@
 package crawler;
 
-public class FinishWorker extends AbstractWorker {
+public class WorkerFinish extends AbstractWorker {
 
-	public FinishWorker(String name, boolean cancellation) {
+	public WorkerFinish() {
+		this("dummyWorker", false);
+	}
+	public WorkerFinish(String name, boolean cancellation) {
 		super(name, cancellation);
 	}
 

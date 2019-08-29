@@ -29,7 +29,7 @@ public class CrawlStatistic {
 			sb.append("\n");
 		}
 		sb.append('}');
-		DelayWorker temp = new DelayWorker();
+		WorkerDelay temp = new WorkerDelay();
 		temp.getThreadName();
 		return sb.toString();
 	}
