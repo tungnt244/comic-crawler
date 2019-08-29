@@ -1,3 +1,5 @@
+package crawler;
+
 import java.util.List;
 
 public interface TaskHolder {
@@ -12,5 +14,5 @@ public interface TaskHolder {
 
 	public boolean addTask(Task task);
 
-	public void removeTask(Task task);
+	public Task removeTask(String workerName);
 }

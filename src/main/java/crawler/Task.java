@@ -1,13 +1,16 @@
+package crawler;
+
 import java.io.Serializable;
+import java.net.URL;
 import java.util.Set;
 
 public interface Task extends Comparable<Task>{
 
-	public void putAttribute(String key, Serializable value);
+	void putAttribute(String key, Serializable value);
 
-	public Serializable getAttribute(String key);
+	Serializable getAttribute(String key);
 
-	public String getLastWorker();
+	String getLastWorker();
 
 	public void setLastWorker(String lastWorker);
 
@@ -22,4 +25,6 @@ public interface Task extends Comparable<Task>{
 	public void cancel();
 
 	String printAttributes();
+
+	void setUrl(URL url);
 }
