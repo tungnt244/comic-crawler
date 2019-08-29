@@ -31,21 +31,17 @@ public class Run {
 		workers.add(new WorkerDelay());
 		workers.add(new WorkerDummy());
 		workers.add(new WorkerFinish());
+		workerTaskProvider.setListTasks(finalTasks);
+		workers.add(workerTaskProvider);
+
 		List<String> chain = workers.stream().map(AbstractWorker::getName).collect(Collectors.toList());
 		chain.add(workerTaskProvider.getName());
 		TaskHolder taskHolder = new SimpleTaskHolder();
 		taskHolder.setWorkerChain(chain);
 
-
-		workerTaskProvider.setListTasks(finalTasks);
-		workerTaskProvider.setTaskHolder(taskHolder);
-
 		workers.forEach(abstractWorker -> {
 			abstractWorker.setTaskHolder(taskHolder);
 		});
-		System.out.println("hello there");
-		workers.add(workerTaskProvider);
-		workers.get(0).start();
 
 	}
 }

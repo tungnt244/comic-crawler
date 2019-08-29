@@ -17,7 +17,8 @@ public class WorkerDummy extends AbstractWorker {
 
 	@Override
 	public void newTask(Task task) {
-		System.out.println("new task dummy");
+		Util.pretendToWork(getThreadName(), 1000);
+
 //		taskHolder.addTask(task);
 		releaseTask(task);
 	}

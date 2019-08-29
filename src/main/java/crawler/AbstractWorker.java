@@ -80,22 +80,22 @@ public abstract class AbstractWorker implements Worker, Runnable {
 
 			if(!pollTask()) {
 				try {
-					System.out.println("Slepp for 5s");
-					Thread.sleep(sleepTimeOut);
+					System.out.println("No task left: "+getThreadName());
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				sleptMilis += sleepTimeOut;
 			}
-			if(taskHolder.getTasksCount() <= 0) {
-				stop = true;
-			}
+//			if(taskHolder.getTasksCount() <= 0) {
+//				stop = true;
+//			}
 		}
-		System.out.println("Runnnnnnn");
+//		System.out.println("Runnnnnnn");
 	}
 
 	boolean pollTask() {
-		System.out.println("poll task "+name);
+		Util.logPollTask(getThreadName());
 		Task task = null;
 		try {
 			do {
@@ -132,10 +132,9 @@ public abstract class AbstractWorker implements Worker, Runnable {
 			thisThread = new Thread(this);
 			thisThread.setName(String.format("%s.%d", name, id));
 			thisThread.start();
-			System.out.println("lets start from " + getName() + " " + getThreadName());
+			System.out.println("started: " + getThreadName());
 			return true;
 		}
-		System.out.println("dafu from " + getName());
 		return false;
 	}
 
@@ -170,7 +169,7 @@ public abstract class AbstractWorker implements Worker, Runnable {
 		tasksInProgress.decrementAndGet();
 		tasksReleased.incrementAndGet();
 		task.setLastWorker(name);
-		System.out.printf("Calling release task for %s", task);
+		System.out.printf("release task %s %s\n", task, getThreadName());
 		taskHolder.releaseTask(task);
 	}
 }

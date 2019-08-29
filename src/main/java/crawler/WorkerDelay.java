@@ -33,7 +33,8 @@ public class WorkerDelay extends AbstractWorker {
 
 	@Override
 	public void newTask(Task tsk) {
-		WorkerProfiler.polledTask(tsk, "delay boy");
+		Util.pretendToWork(getThreadName(), 2000);
+//		WorkerProfiler.polledTask(tsk, "delay boy");
 //		if (tsk instanceof CrawlTask) {
 			CrawlTask task = (CrawlTask) tsk;
 
@@ -52,16 +53,16 @@ public class WorkerDelay extends AbstractWorker {
 //				return;
 //			}
 
-			int delay = task.getCrawlDelay();
-
-			if (delay < 0) {
-				throw new RuntimeException("Crawl-delay isn't set for " + task.getUrl());
-			}
-			long lastCrawlingTime = task.getLastCrawlingTime();
-			if (lastCrawlingTime < 0) {
-				lastCrawlingTime = System.currentTimeMillis();
-				LOG.debug("No lastCrawling time set for " + task.getUrl());
-			}
+//			int delay = task.getCrawlDelay();
+//
+//			if (delay < 0) {
+//				throw new RuntimeException("Crawl-delay isn't set for " + task.getUrl());
+//			}
+//			long lastCrawlingTime = task.getLastCrawlingTime();
+//			if (lastCrawlingTime < 0) {
+//				lastCrawlingTime = System.currentTimeMillis();
+//				LOG.debug("No lastCrawling time set for " + task.getUrl());
+//			}
 
 //			putInQueue(task, task.getQueueName(), task.getUrl().toString(), lastCrawlingTime, delay);
 			releaseTask(tsk);

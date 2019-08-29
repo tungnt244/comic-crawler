@@ -57,6 +57,14 @@ public class UrlRequestPacket {
 		return listResults;
 	}
 
+	public List<UrlRequestPacket> generateLatePack() throws IOException {
+		String file4 = this.getClass().getClassLoader().getResource("source4").getPath();
+		File source4 = new File(file4);
+		List<UrlRequestPacket> listResults = new LinkedList<>();
+		listResults.add(generateFakeData(source4));
+		return listResults;
+	}
+
 	private UrlRequestPacket generateFakeData(File file) throws IOException {
 		List<String> lines = Files.readAllLines(file.toPath());
 		List<URL> urlList = new LinkedList<>();

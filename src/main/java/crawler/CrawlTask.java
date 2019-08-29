@@ -93,4 +93,11 @@ public class CrawlTask extends AbstractTask implements Serializable {
 		return queueName;
 	}
 
+	@Override
+	public String toString() {
+		return "CrawlTask{" +
+				"queueName='" + queueName + '\'' +
+				", url=" + url +
+				'}';
+	}
 }

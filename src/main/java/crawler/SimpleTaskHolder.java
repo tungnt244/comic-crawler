@@ -69,7 +69,7 @@ public class SimpleTaskHolder implements TaskHolder {
 		} catch (InterruptedException e) {
 			LOG.error("put was interrupted {}", task);
 		}
-		tasksCount++;
+//		tasksCount++;
 		return result;
 	}
 
@@ -80,7 +80,7 @@ public class SimpleTaskHolder implements TaskHolder {
 		if(result!=null) {
 			LOG.debug("{} removed task {}", workerName, result.toString());
 		}
-		tasksCount--;
+//		tasksCount--;
 		return result;
 	}
 

@@ -3,7 +3,7 @@ package crawler;
 public class WorkerFinish extends AbstractWorker {
 
 	public WorkerFinish() {
-		this("dummyWorker", false);
+		this("finishWorker", false);
 	}
 	public WorkerFinish(String name, boolean cancellation) {
 		super(name, cancellation);
@@ -26,14 +26,15 @@ public class WorkerFinish extends AbstractWorker {
 
 	@Override
 	public void newTask(Task task) {
-		System.out.println(name + " new task");
+		Util.pretendToWork(getThreadName(), 1000);
+
 		releaseTask(task);
 	}
 	static int count = 0;
 	@Override
 	public void everyCycle() {
-		System.out.println(name + " every cycle");
-		System.out.println(count++);
-		pollTask();
+		System.out.println("Inside cycle of finish");
+//		System.out.println(count++);
+//		pollTask();
 	}
 }

@@ -1,0 +1,9 @@
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.task.com/dd.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskB.com/BB.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskC.com/CC.html fCrT: 0 fDT: 1566957747287 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.task.com/dd2.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskB.com/BB2.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskC.com/CC2.html fCrT: 0 fDT: 1566957747287 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.task.com/dd3.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskB.com/BB3.html fCrT: 0 fDT: 1566957746362 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
+sq: nl.alibaba.com crDelayMsec: 2000 RequestUrl https://www.taskC.com/CC3.html fCrT: 0 fDT: 1566957747287 flags: 66 lM: null eTag: null fdDepth: 2 flags2: 0 discoveredDepth: -1
